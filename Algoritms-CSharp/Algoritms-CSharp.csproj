@@ -6,4 +6,8 @@
     <RootNamespace>Algoritms_CSharp</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Algorithms-DataStruct-Lib\Algorithms-DataStruct-Lib.csproj" />
+  </ItemGroup>
+
 </Project>
