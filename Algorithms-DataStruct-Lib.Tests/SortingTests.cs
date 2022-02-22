@@ -17,7 +17,7 @@ namespace Algorithms_DataStruct_Lib.Tests
         private int[][] Samples()
         {
             int[][] samples = new int[9][];
-            samples[0] = new[] { 1, -1, -44, 13 };
+            samples[0] = new[] { 1, -1, 100, -44, 13 };
             samples[1] = new[] { 2, 1 };
             samples[2] = new[] { 2, 1, 3 };
             samples[3] = new[] { 1, 1, 5, 12, 1 };
@@ -63,6 +63,13 @@ namespace Algorithms_DataStruct_Lib.Tests
         {
             Sorting sort = new Sorting();
             RunTestsForSortAlgoritm(sort.BubbleSort);
+        }
+
+        [Test]
+        public void SelectionSort_ValidInput_SortedOutput()
+        {
+            Sorting sort = new Sorting();
+            RunTestsForSortAlgoritm(sort.SelectionSort);
         }
     }
 }

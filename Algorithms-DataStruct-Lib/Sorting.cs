@@ -9,7 +9,7 @@ namespace Algorithms_DataStruct_Lib
     public class Sorting
     {
         /// <summary>
-        /// Алгоритм пузырьковой сортировки
+        /// Пузырьковая сортировка(Bubble Sort)
         /// </summary>
         /// <param name="array"></param>
         public void BubbleSort(int[] array)
@@ -34,6 +34,41 @@ namespace Algorithms_DataStruct_Lib
                         Swap(array, j, j + 1);
                 }
                     
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Сортировка выборкой(Selection Sort)
+        /// </summary>
+        /// <param name="array"></param>
+        public void SelectionSort(int[] array)
+        {
+            #region version_1
+            //for (int partIndex = array.Length - 1; partIndex > 0; partIndex--)
+            //{
+            //    int largestAt = 0;
+            //    for (int i = 1; i <= partIndex; i++)
+            //    {
+            //        if (array[i] > array[largestAt])
+            //        {
+            //            largestAt = i;
+            //        }
+            //    }
+            //    Swap(array, largestAt, partIndex);
+            //}
+            #endregion
+
+            #region version_2
+            for (int i = 0; i < array.Length; i++)
+            {
+                int min = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[min])
+                        min = j;
+                }
+                Swap(array, i, min);
             }
             #endregion
         }
