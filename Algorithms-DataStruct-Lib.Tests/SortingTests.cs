@@ -17,10 +17,10 @@ namespace Algorithms_DataStruct_Lib.Tests
         private int[][] Samples()
         {
             int[][] samples = new int[9][];
-            samples[0] = new[] { 1 };
+            samples[0] = new[] { 1, -1, -44, 13 };
             samples[1] = new[] { 2, 1 };
             samples[2] = new[] { 2, 1, 3 };
-            samples[3] = new[] { 1, 1, 1 };
+            samples[3] = new[] { 1, 1, 5, 12, 1 };
             samples[4] = new[] { 2, -1, 3, 3 };
             samples[5] = new[] { 4, -5, 3, 1 };
             samples[6] = new[] { 1, 3, 12, 1 };
