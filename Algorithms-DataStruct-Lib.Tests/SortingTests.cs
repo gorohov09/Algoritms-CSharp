@@ -71,5 +71,12 @@ namespace Algorithms_DataStruct_Lib.Tests
             Sorting sort = new Sorting();
             RunTestsForSortAlgoritm(sort.SelectionSort);
         }
+
+        [Test]
+        public void InsertionSort_ValidInput_SortedOutput()
+        {
+            Sorting sort = new Sorting();
+            RunTestsForSortAlgoritm(sort.InsertionSort);
+        }
     }
 }

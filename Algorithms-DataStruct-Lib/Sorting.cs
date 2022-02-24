@@ -74,6 +74,24 @@ namespace Algorithms_DataStruct_Lib
         }
 
         /// <summary>
+        /// Сортировка вставками(Insertion Sort)
+        /// </summary>
+        /// <param name="array"></param>
+        public void InsertionSort(int[] array)
+        {
+            for (int partIndex = 1; partIndex < array.Length; partIndex++)
+            {
+                int curUnsorted = array[partIndex];
+                int i = 0;
+                for (i = partIndex; i > 0 && array[i - 1] > curUnsorted; i--)
+                {
+                    array[i] = array[i - 1];
+                }
+                array[i] = curUnsorted;
+            }
+        }
+
+        /// <summary>
         /// Вспомогательный метод, который нужен для перестановки элементов
         /// </summary>
         /// <param name="array"></param>
