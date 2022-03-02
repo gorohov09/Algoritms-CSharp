@@ -78,5 +78,19 @@ namespace Algorithms_DataStruct_Lib.Tests
             Sorting sort = new Sorting();
             RunTestsForSortAlgoritm(sort.InsertionSort);
         }
+
+        [Test]
+        public void ShellSort_ValidInput_SortedOutput()
+        {
+            Sorting sort = new Sorting();
+            RunTestsForSortAlgoritm(sort.ShellSort);
+        }
+
+        [Test]
+        public void MergeSort_ValidInput_SortedOutput()
+        {
+            Sorting sort = new Sorting();
+            RunTestsForSortAlgoritm(sort.MergeSort);
+        }
     }
 }

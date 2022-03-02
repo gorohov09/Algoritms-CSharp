@@ -92,6 +92,71 @@ namespace Algorithms_DataStruct_Lib
         }
 
         /// <summary>
+        /// Сортировка Шелла(Shell Sort)
+        /// </summary>
+        /// <param name="array"></param>
+        public void ShellSort(int[] array)
+        {
+            int gap = 1;
+            while (gap < array.Length / 3)
+                gap = 3 * gap + 1;
+
+            while (gap >= 1)
+            {
+                for(int i = gap; i < array.Length; i++)
+                {
+                    for(int j = i; j >= gap && array[j] < array[j - gap]; j-= gap)
+                    {
+                        Swap(array, j, j - gap);
+                    }
+                }
+                gap /= 3;
+            }
+        }
+
+        /// <summary>
+        /// Сортировка слиянием
+        /// </summary>
+        /// <param name="array"></param>
+        public void MergeSort(int[] array)
+        {
+            int[] aux = new int[array.Length]; //Вспомогательный массив
+
+            Sort(0, array.Length - 1);
+
+            void Sort(int low, int high)
+            {
+                if (high <= low) //Базовый случай выхода из рекурсии
+                    return;
+
+                int mid = (low + high) / 2; //Срединный индекс
+                Sort(low, mid); //Разделение левой части
+                Sort(mid + 1, high); //Разделение правой части
+                Merge(low, mid, high); //Фаза слияния
+            }
+
+            void Merge(int low, int mid, int high)
+            {
+                int i = low; //Первый элемент левого массива
+                int j = mid + 1;  //Первый элемент правого массива
+
+                Array.Copy(array, low, aux, low, high - low + 1);
+
+                for (int k = low; k <= high; k++)
+                {
+                    if (i > mid) 
+                        array[k] = aux[j++];
+                    else if (j > high) 
+                        array[k] = aux[i++];
+                    else if (aux[j] < aux[i]) 
+                        array[k] = aux[j++];
+                    else 
+                        array[k] = aux[i++];
+                }
+            }
+        }
+
+        /// <summary>
         /// Вспомогательный метод, который нужен для перестановки элементов
         /// </summary>
         /// <param name="array"></param>
