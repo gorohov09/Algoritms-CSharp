@@ -8,9 +8,9 @@ namespace Algorithms_DataStruct_Lib
 {
     public class SinglyLinkedList<T>
     {
-        public Node<T> Head { get; set; } //Ссылка на начало узла
+        private Node<T> Head { get; set; } //Ссылка на начало узла
 
-        public Node<T> Tail { get; set; } //Ссылка на конец узла
+        private Node<T> Tail { get; set; } //Ссылка на конец узла
 
         public int Count { get; set; }
 
@@ -88,6 +88,20 @@ namespace Algorithms_DataStruct_Lib
 
         }
 
-        public bool IsEmpty => Count == 0;
+        public bool Contains(T value)
+        {
+            Node<T> Current = Head;
+
+            while (Current != null)
+            {
+                if (Current.Value.Equals(value))
+                    return true;
+                Current = Current.Next;
+            }
+
+            return false;
+        }
+
+        public bool IsEmpty { get { return Count == 0; } }
     }
 }
