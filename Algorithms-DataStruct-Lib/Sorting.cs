@@ -157,6 +157,89 @@ namespace Algorithms_DataStruct_Lib
         }
 
         /// <summary>
+        /// Быстрая сортировка
+        /// </summary>
+        /// <param name="array"></param>
+        public void QuickSort(int[] array)
+        {
+            #region version_1
+            //Sort(0, array.Length - 1);
+
+            //void Sort(int low, int high)
+            //{
+            //    if (high <= low)
+            //        return;
+            //    int j = Partition(low, high);
+            //    Sort(low, j - 1);
+            //    Sort(j + 1, high);   
+            //}
+
+            //int Partition(int low, int high)
+            //{
+            //    int i = low;
+            //    int j = high + 1;
+
+            //    int pivot = array[low];
+            //    while (true)
+            //    {
+            //        while(array[++i] < pivot)
+            //        {
+            //            if (i == high)
+            //                break;
+            //        }
+            //        while (pivot < array[--j])
+            //        {
+            //            if (i == low)
+            //                break;
+            //        }
+
+            //        if (i >= j)
+            //            break;
+
+            //        Swap(array, i, j);
+            //    }
+            //    Swap(array, low, j);
+            //    return j;
+            //}
+            #endregion
+
+            Sort(0, array.Length - 1);
+
+            void Sort(int minIndex, int maxIndex)
+            {
+                if (minIndex >= maxIndex)
+                {
+                    return;
+                }
+
+                int pivotIndex = GetPivotIndex(minIndex, maxIndex);
+
+                Sort(minIndex, pivotIndex - 1);
+
+                Sort(pivotIndex + 1, maxIndex);
+            }
+
+            int GetPivotIndex(int minIndex, int maxIndex)
+            {
+                int pivot = minIndex - 1;
+
+                for (int i = minIndex; i <= maxIndex; i++)
+                {
+                    if (array[i] < array[maxIndex])
+                    {
+                        pivot++;
+                        Swap(array, pivot, i);
+                    }
+                }
+
+                pivot++;
+                Swap(array, pivot, maxIndex);
+
+                return pivot;
+            }
+        }
+
+        /// <summary>
         /// Вспомогательный метод, который нужен для перестановки элементов
         /// </summary>
         /// <param name="array"></param>
