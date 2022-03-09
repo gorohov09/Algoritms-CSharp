@@ -8,9 +8,9 @@ namespace Algorithms_DataStruct_Lib
 {
     public class SinglyLinkedList<T>
     {
-        private Node<T> Head { get; set; } //Ссылка на начало узла
+        public Node<T> Head { get; set; } //Ссылка на начало узла
 
-        private Node<T> Tail { get; set; } //Ссылка на конец узла
+        public Node<T> Tail { get; set; } //Ссылка на конец узла
 
         public int Count { get; set; }
 

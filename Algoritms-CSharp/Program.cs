@@ -1,25 +1,46 @@
 ﻿using Algorithms_DataStruct_Lib;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Algoritms_CSharp
 {
+    public class Person
+    {
+        public string Name { get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Person person)
+            {
+                return person.Name == this.Name;
+            }
+            else
+                return false;
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)
         {
-            var ints = In.ReadInts(@"D:\Программирование\Data\2Kints.txt").ToArray();
+            DoubleLinkedList<Person> list = new DoubleLinkedList<Person>();
 
-            var watch = new Stopwatch();
-            watch.Start();
+            Person person = new Person() { Name = "Андрей"};
+            Person person2 = new Person() { Name = "Максим" };
+            Person person3 = new Person() { Name = "Серега" };
 
-            var triplets = ThreeSum.Count(ints);
+            list.AddLast(person);
+            list.AddLast(person2);
+            list.AddLast(person3);
 
-            watch.Stop();
+            list.Remove(person3);
 
-            Console.WriteLine($"The number triplets: {triplets}");
-            Console.WriteLine($"Time taken: {watch.ElapsedMilliseconds}");
+            Console.WriteLine();
+
+
+            
         }
     }
 }
