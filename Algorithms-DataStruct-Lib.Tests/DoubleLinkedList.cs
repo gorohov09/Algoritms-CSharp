@@ -54,5 +54,19 @@ namespace Algorithms_DataStruct_Lib.Tests
             Assert.True(_list.Contains(100));
             Assert.True(!_list.Contains(120));
         }
+
+        [Test]
+        public void Clear_CorrectState()
+        {
+            _list.AddFirst(15);
+            _list.AddLast(13);
+            _list.AddFirst(145);
+            Assert.IsTrue(_list.Head != null);
+            Assert.IsTrue(_list.Tail != null);
+            _list.Clear();
+            Assert.IsTrue(_list.Head == null);
+            Assert.IsTrue(_list.Tail == null);
+            Assert.IsTrue(_list.Count == 0);
+        }
     }
 }

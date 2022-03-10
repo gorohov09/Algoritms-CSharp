@@ -152,6 +152,13 @@ namespace Algorithms_DataStruct_Lib
             return false;
         }
 
+        public void Clear()
+        {
+            Head = null;
+            Tail = null;
+            Count = 0;
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             DoubleLinkedNode<T> Current = Head;

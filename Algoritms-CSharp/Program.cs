@@ -41,6 +41,8 @@ namespace Algoritms_CSharp
             }
 
             Console.WriteLine(list.Contains(person));
+
+            LinkedList<int> l = new LinkedList<int>();
         }
     }
 }
