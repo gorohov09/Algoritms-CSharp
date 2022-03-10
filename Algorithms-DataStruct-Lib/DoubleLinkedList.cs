@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms_DataStruct_Lib
 {
-    public class DoubleLinkedList<T>
+    public class DoubleLinkedList<T> : IEnumerable<T>
     {
         public DoubleLinkedNode<T> Head { get; set; }
 
@@ -137,6 +138,43 @@ namespace Algorithms_DataStruct_Lib
                 }
             }
             Count--;
+        }
+
+        public bool Contains(T value)
+        {
+            DoubleLinkedNode<T> Current = Head;
+            while (Current != null)
+            {
+                if (Current.Value.Equals(value))
+                    return true;
+                Current = Current.Next;
+            }
+            return false;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            DoubleLinkedNode<T> Current = Head;
+            while (Current != null)
+            {
+                yield return Current.Value;
+                Current = Current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerable<T> BackEnumenator()
+        {
+            DoubleLinkedNode<T> Currnet = Tail;
+            while (Currnet != null)
+            {
+                yield return Currnet.Value;
+                Currnet = Currnet.Prev;
+            }
         }
     }
 }

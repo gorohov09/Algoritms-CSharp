@@ -35,12 +35,12 @@ namespace Algoritms_CSharp
             list.AddLast(person2);
             list.AddLast(person3);
 
-            list.Remove(person3);
+            foreach (var item in list.BackEnumenator())
+            {
+                Console.WriteLine(item.Name);
+            }
 
-            Console.WriteLine();
-
-
-            
+            Console.WriteLine(list.Contains(person));
         }
     }
 }
