@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Algorithms_DataStruct_Lib.Tests
 {
     [TestFixture]
-    public class DoubleLinkedList
+    public class DoubleLinkedListTests
     {
         private DoubleLinkedList<int> _list;
 

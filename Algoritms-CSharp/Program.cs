@@ -25,24 +25,31 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            DoubleLinkedList<Person> list = new DoubleLinkedList<Person>();
+            ArrayStack<Person> stack = new ArrayStack<Person>(2);
 
-            Person person = new Person() { Name = "Андрей"};
+            Person person1 = new Person() { Name = "Андрей"};
             Person person2 = new Person() { Name = "Максим" };
             Person person3 = new Person() { Name = "Серега" };
 
-            list.AddLast(person);
-            list.AddLast(person2);
-            list.AddLast(person3);
+            stack.Push(person1);
+            stack.Push(person2);
+            stack.Push(person3);
 
-            foreach (var item in list.BackEnumenator())
+            foreach (var item in stack)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.WriteLine();
+
+            stack.Pop();
+
+            foreach (var item in stack)
             {
                 Console.WriteLine(item.Name);
             }
 
-            Console.WriteLine(list.Contains(person));
+            var person = stack.Peek();
 
-            LinkedList<int> l = new LinkedList<int>();
         }
     }
 }
