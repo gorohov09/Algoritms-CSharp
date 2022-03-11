@@ -9,21 +9,30 @@ namespace Algorithms_DataStruct_Lib.Stack
 {
     public class LinkedStack<T> : IEnumerable<T>
     {
-        private readonly SinglyLinkedList<T> _list = new SinglyLinkedList<T>();
+        public Node<T> Head { get; set; }
+
+        public int Count { get; set; }
+
+        public bool IsEmpty { get { return Count == 0; } }
 
         public void Push(T item)
         {
-            _list.AddFirst(item);
+            Node<T> node = new Node<T>(item);
+            node.Next = Head;
+            Head = node;
             Count++;
         }
 
-        public void Pop()
+        public T Pop()
         {
             if (IsEmpty)
                 throw new InvalidOperationException("Стек пустой");
 
-            _list.RemoveFirst();
+            T result = Head.Value;
+
+            Head = Head.Next;
             Count--;
+            return result;
         }
 
         public T Peek()
@@ -31,21 +40,22 @@ namespace Algorithms_DataStruct_Lib.Stack
             if (IsEmpty)
                 throw new InvalidOperationException("Стек пустой");
 
-            return _list.Head.Value;
+            return Head.Value;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return _list.GetEnumerator();
+            Node<T> Current = Head;
+            while (Current != null)
+            {
+                yield return Current.Value;
+                Current = Current.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
-
-        public bool IsEmpty { get { return Count == 0; } }
-
-        public int Count { get; private set; }
     }
 }
