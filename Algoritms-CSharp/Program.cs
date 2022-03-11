@@ -1,4 +1,5 @@
 ﻿using Algorithms_DataStruct_Lib;
+using Algorithms_DataStruct_Lib.Stack;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,7 +26,7 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            ArrayStack<Person> stack = new ArrayStack<Person>(2);
+            LinkedStack<Person> stack = new LinkedStack<Person>();
 
             Person person1 = new Person() { Name = "Андрей"};
             Person person2 = new Person() { Name = "Максим" };
@@ -35,20 +36,17 @@ namespace Algoritms_CSharp
             stack.Push(person2);
             stack.Push(person3);
 
-            foreach (var item in stack)
-            {
-                Console.WriteLine(item.Name);
-            }
-            Console.WriteLine();
-
             stack.Pop();
 
-            foreach (var item in stack)
-            {
-                Console.WriteLine(item.Name);
-            }
 
             var person = stack.Peek();
+            person.Name = "Aaaaaaaa";
+
+            foreach (var e in stack)
+            {
+                Console.WriteLine(e.Name);
+            }
+
 
         }
     }
