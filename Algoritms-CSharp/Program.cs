@@ -27,7 +27,7 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            CircularQueue<int> queue = new CircularQueue<int>(2);
+            LinkedQueue<int> queue = new LinkedQueue<int>();
 
             queue.Enqueue(2);
             queue.Enqueue(3);
@@ -35,26 +35,6 @@ namespace Algoritms_CSharp
 
             queue.Dequeue();
             queue.Dequeue();
-            queue.Enqueue(12);
-            queue.Enqueue(14);
-            queue.Enqueue(22);
-
-            foreach (var item in queue)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
-
-            queue.Enqueue(1);
-
-            foreach (var item in queue)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
-
             queue.Dequeue();
 
             foreach (var item in queue)
