@@ -1,4 +1,5 @@
 ﻿using Algorithms_DataStruct_Lib;
+using Algorithms_DataStruct_Lib.Queues;
 using Algorithms_DataStruct_Lib.Stack;
 using System;
 using System.Collections.Generic;
@@ -26,27 +27,40 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            LinkedStack<Person> stack = new LinkedStack<Person>();
+            CircularQueue<int> queue = new CircularQueue<int>(2);
 
-            Person person1 = new Person() { Name = "Андрей"};
-            Person person2 = new Person() { Name = "Максим" };
-            Person person3 = new Person() { Name = "Серега" };
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
 
-            stack.Push(person1);
-            stack.Push(person2);
-            stack.Push(person3);
+            queue.Dequeue();
+            queue.Dequeue();
+            queue.Enqueue(12);
+            queue.Enqueue(14);
+            queue.Enqueue(22);
 
-            stack.Pop();
-
-
-            var person = stack.Peek();
-            person.Name = "Aaaaaaaa";
-
-            foreach (var e in stack)
+            foreach (var item in queue)
             {
-                Console.WriteLine(e.Name);
+                Console.WriteLine(item);
             }
 
+            Console.WriteLine();
+
+            queue.Enqueue(1);
+
+            foreach (var item in queue)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
+            queue.Dequeue();
+
+            foreach (var item in queue)
+            {
+                Console.WriteLine(item);
+            }
 
         }
     }
