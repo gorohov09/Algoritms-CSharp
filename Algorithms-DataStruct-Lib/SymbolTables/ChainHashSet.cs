@@ -29,14 +29,8 @@ namespace Algorithms_DataStruct_Lib.SymbolTables
         }
 
         public ChainHashSet()
+            :this(Prime.MinPrime)
         {
-            Capacity = DefaultCapacity;
-            _chains = new SequentialSearchSt<Tkey, TValue>[DefaultCapacity];          
-
-            for (int i = 0; i < Capacity; i++)
-            {
-                _chains[i] = new SequentialSearchSt<Tkey, TValue>();
-            }
         }
 
         /// <summary>
@@ -100,6 +94,10 @@ namespace Algorithms_DataStruct_Lib.SymbolTables
                 _chains[index].Remove(key); //Удаляем пару по ключу
                 Count--;
 
+                //Сужение размерности массива
+                if (Capacity > DefaultCapacity && Count <= 2 * Capacity)
+                    Resize(Prime.ReducePrime(Capacity));
+
                 return true;
             }
 
@@ -119,7 +117,7 @@ namespace Algorithms_DataStruct_Lib.SymbolTables
 
             //Когда средняя длина цепочек достигает 10 узлов и больше, удавиваем в размерах массив цепочек
             if (Count >= 10 * Capacity)
-                Resize(2 * Capacity);
+                Resize(Prime.ExpendPrime(Capacity));
 
             int i = Hash(key);
 
