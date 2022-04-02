@@ -73,18 +73,13 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            ArrayDequeue<int> deq = new ArrayDequeue<int>(4);
-
+            LinkedDequeue<int> deq = new LinkedDequeue<int>();
             deq.Push_Back(10);
             deq.Push_Back(12);
-            deq.Push_Back(13);
-            deq.Push_Front(55);
-            deq.Push_Front(33);
-            deq.Pop_Back();
-            deq.Pop_Back();
             deq.Pop_Front();
-            deq.Push_Back(100);
-            deq.Push_Front(120);
+            deq.Pop_Front();
+
+            deq.Push_Front(13);
 
             foreach (var item in deq)
             {
