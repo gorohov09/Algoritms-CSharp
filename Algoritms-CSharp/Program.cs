@@ -1,7 +1,9 @@
 ﻿using Algorithms_DataStruct_Lib;
+using Algorithms_DataStruct_Lib.Dequeues;
 using Algorithms_DataStruct_Lib.Queues;
 using Algorithms_DataStruct_Lib.Stack;
 using Algorithms_DataStruct_Lib.SymbolTables;
+using Algorithms_DataStruct_Lib.Trees;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,6 +12,7 @@ using System.Linq;
 
 namespace Algoritms_CSharp
 {
+    
     public class PhoneNumber
     {
         public string AreaCode { get; }
@@ -52,33 +55,40 @@ namespace Algoritms_CSharp
         }
     }
 
-    public class Person
+    public class Person : IComparable<Person>
     {
         public string Name { get; set; }
 
         public int Age { get; set; }
 
-        public int Ssh { get; set; }
+        public int CompareTo(Person other)
+        {
+            if (this.Age == other.Age) return 0;
+            else if (this.Age < other.Age) return -1;
+            else return 1;
+        }
     }
 
     public class Program
     {
         static void Main(string[] args)
         {
-            ChainHashSet<string, int> table = new ChainHashSet<string, int>(5);
+            ArrayDequeue<int> deq = new ArrayDequeue<int>(4);
 
-            table.Add("a", 3);
-            table.Add("b", 4);
-            table.Add("c", 5);
-            table.Add("d", 6);
-            table.Add("dfdf", 45);
-            table.Add("4567", 12);
+            deq.Push_Back(10);
+            deq.Push_Back(12);
+            deq.Push_Back(13);
+            deq.Push_Front(55);
+            deq.Push_Front(33);
+            deq.Pop_Back();
+            deq.Pop_Back();
+            deq.Pop_Front();
+            deq.Push_Back(100);
+            deq.Push_Front(120);
 
-            var keys = table.Keys();
-
-            foreach (string key in keys)
+            foreach (var item in deq)
             {
-                Console.WriteLine(key);
+                Console.WriteLine(item);
             }
         }
     }
