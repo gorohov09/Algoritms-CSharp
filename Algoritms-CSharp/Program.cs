@@ -73,18 +73,31 @@ namespace Algoritms_CSharp
     {
         static void Main(string[] args)
         {
-            LinkedDequeue<int> deq = new LinkedDequeue<int>();
-            deq.Push_Back(10);
-            deq.Push_Back(12);
-            deq.Pop_Front();
-            deq.Pop_Front();
+            MaxHeap<int> heap = new MaxHeap<int>();
 
-            deq.Push_Front(13);
+            heap.Insert(12);
+            heap.Insert(55);
+            heap.Insert(3);
+            heap.Insert(100);
+            heap.Insert(150);
 
-            foreach (var item in deq)
+            var val = heap.Values();
+
+            foreach (var item in val)
             {
-                Console.WriteLine(item);
+                Console.Write($"{item} ");
             }
+            Console.WriteLine();
+
+            Console.WriteLine(heap.Peek());
+
+            heap.Remove();
+
+            Console.WriteLine(heap.Peek());
+
+            
+
+            
         }
     }
 }
